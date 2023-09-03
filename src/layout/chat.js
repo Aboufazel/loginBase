@@ -10,7 +10,7 @@ import {
     TypingIndicator, ConversationHeader, Avatar, InfoButton,
 } from '@chatscope/chat-ui-kit-react';
 import {NewKey} from "../api/appApi";
-import {useNavigate} from "react-router-dom";
+import {json, useNavigate} from "react-router-dom";
 import {Button} from "@material-tailwind/react";
 
 
@@ -90,8 +90,9 @@ function Chat() {
             }).then((data) => {
             return data.json();
         }).then((data) => {
+            console.log(data.choices[0].message.content.split(","))
             setMessages([...chatMessages, {
-                message: data.choices[0].message.content.json,
+                message: data.choices[0].message.content,
                 sender: "ChatGPT"
             }]);
             setIsTyping(false);
@@ -102,19 +103,13 @@ function Chat() {
         <React.Fragment>
             <MainContainer style={{height: "90vh", border: "none"}}>
                 <ChatContainer>
-                    <ConversationHeader style={{marginBottom:"15px"}} role={'sender'}>
-                        <ConversationHeader.Back onClick={() => navigate('/')} />
-                        <Avatar status={"available"} name={"extension"}
-                                src={"https://chatscope.io/storybook/react/static/media/zoe.e31a4ff8.svg"}/>
-                        <ConversationHeader.Content userName=" Extention Chat " info="Online"/>
-                    </ConversationHeader>
                     <MessageList
                         scrollBehavior="smooth"
                         typingIndicator={isTyping ? <TypingIndicator content=" chat is typing "/> : null}
                     >
-                        {messages.map((message, i) => {
+                        {messages.map((message, index) => {
                             // console.log(message)
-                            return <Message className={"text-start"} key={i} model={message}/>
+                            return <Message className={"text-start"} key={index} model={message}/>
                         })}
                     </MessageList>
                 </ChatContainer>
