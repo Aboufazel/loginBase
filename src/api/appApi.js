@@ -9,3 +9,8 @@ export const LoginApi = (uname , pass) =>{
         "uname":uname , "pass":pass
     })
 }
+
+
+export const getData = () =>{
+    return BaseUrl.get('/test/users/getData')
+}
