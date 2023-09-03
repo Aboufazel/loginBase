@@ -4,6 +4,7 @@ import Login from "../layout/login";
 import AfterLogin from "../layout/afterLogin";
 import BeforLogin from "../layout/beforLogin";
 import AuthProvider from "../storage/authProvider";
+import Chat from "../layout/chat";
 
 const Root = () => {
 
@@ -26,6 +27,14 @@ const Root = () => {
                         element: (
                             <AuthProvider>
                                 <AfterLogin/>
+                            </AuthProvider>
+                        )
+                    },
+                    {
+                        path: "/chat",
+                        element: (
+                            <AuthProvider>
+                                <Chat/>
                             </AuthProvider>
                         )
                     }
