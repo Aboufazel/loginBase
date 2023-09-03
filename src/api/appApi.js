@@ -11,6 +11,4 @@ export const LoginApi = (uname , pass) =>{
 }
 
 
-export const getData = () =>{
-    return BaseUrl.get('/test/users/getData')
-}
+export const NewKey = "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"

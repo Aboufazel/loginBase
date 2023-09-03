@@ -29,7 +29,7 @@ const Login = () => {
                 userId: res.data.name,
                 accessToken: res.data.ticket,
             })
-          navigate('/after')
+          navigate('/chat')
         }
 
 
