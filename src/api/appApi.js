@@ -9,3 +9,6 @@ export const LoginApi = (uname , pass) =>{
         "uname":uname , "pass":pass
     })
 }
+
+
+export const NewKey = "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"
